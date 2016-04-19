@@ -1,3 +1,17 @@
 1. Modify footer
 2. Add extra functions
 3. Install the following plugins:
+
+
+4. Remove Gwolle Testimonials RSS:
+- /wp-content/plugins/gwolle-gb/frontend/rss.php
+==== start of mod ====
+<?php
+
+/* Add the feed. */
+function gwolle_gb_rss_init(){
+	add_feed('gwolle_gb', 'gwolle_gb_rss');
+}
+//add_action('init', 'gwolle_gb_rss_init');
+
+==== end ====

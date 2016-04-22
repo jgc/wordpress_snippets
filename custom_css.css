@@ -1,0 +1,31 @@
+/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+.ngg-singlepic {
+	background-color: #000;
+}
+
+.post-thumbnail {
+	display: none;
+}
+
+.more-link {
+	display: none;
+}
+
+nav.amp-wp-title-bar {
+	background: black;
+}
+
+/* Customise hatom structure */
+.hatom-extra {
+	font-style: none;
+	color: #444444;
+	font-size: 10px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	padding-top: 10px;
+	padding-left: 0;
+}

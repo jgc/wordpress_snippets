@@ -1,17 +1,16 @@
-/*
- * Add to bottom of functions.php (for the relevant theme e.g. Twenty Fifteen
+<?php
+/**
+ * Twenty Fifteen functions and definitions
+ *
+
+
+/**
+ * ADDED BY JC
  */
- 
-/*
- * Remove Facebook share counts
- */
+
 add_filter( 'jetpack_sharing_counts', '__return_false' );
 
-
-/*
- * Remove default image links
- */
- // http://www.wpbeginner.com/wp-tutorials/automatically-remove-default-image-links-wordpress/
+// http://www.wpbeginner.com/wp-tutorials/automatically-remove-default-image-links-wordpress/
 // also look at http://www.wpbeginner.com/wp-tutorials/how-to-disable-image-attachment-pages-in-wordpress/
 function wpb_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
@@ -25,9 +24,6 @@ function wpb_imagelink_setup() {
 
 
 /*
- * De-register styles
- */
-/* 
  * http://www.wpbeginner.com/wp-tutorials/how-wordpress-plugins-affect-your-sites-load-time/
     wp_enqueue_style('bootstrap.min.css', WRGF_PLUGIN_URL.'css/bootstrap-admin.css');
     wp_enqueue_style('wrgf-font-awesome', WRGF_PLUGIN_URL.'css/font-awesome-latest/css/font-awesome.min.css');
@@ -70,11 +66,7 @@ if ( !is_admin() )
 }
 add_action( 'wp_print_styles', 'rvg_deregister_styles', 200 );
 
-
 /*
- * De-register scripts
- */
-/* 
  *
     wp_enqueue_script('wrgf-hover-pack-js',WRGF_PLUGIN_URL.'js/hover-pack.js', array('jquery'));
  *
@@ -110,3 +102,43 @@ if ( !is_page('Gallery') ) {
 }
 
 add_action( 'wp_print_scripts', 'rvg_deregister_javascript', 100 );
+
+
+// https://wordpress.org/support/topic/google-webmaster-tools-errors-missing-author-missing-updated
+/* Note addition to custom  css
+/* Customise hatom structure 
+.hatom-extra {
+	font-style: none;
+	color: #444444;
+	font-size: 10px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	padding-top: 10px;
+	padding-left: 0;
+}
+*/
+/* Fix "Missing Author" and "Missing Updated" issue - START */
+add_filter( 'the_content', 'custom_author_code');
+function custom_author_code($content) {
+if (is_home() || is_singular() || is_single() || is_archive()) {
+return $content .
+'<div class="hatom-extra" style="display:none;visibility:hidden;"><span class="title">'. get_the_title() .'</span> was last updated <span class="updated"> '. get_the_modified_time('F jS, Y') .'</span> by <span class="author vcard"><span class="fn">'. get_the_author() .'</span></span></div>' ;
+} else {
+return $content;
+}
+}
+/* Fix "Missing Author" and "Missing Updated" issue - END */
+
+/* Fix "Missing Entry Title" issue - START */
+//add hatom data
+function add_suf_hatom_data($content) {
+$t = get_the_modified_time('F jS, Y');
+$author = get_the_author();
+$title = get_the_title();
+if (is_home() || is_singular() || is_archive() ) {
+$content .= '<div class="hatom-extra" style="display:none;visibility:hidden;"><span class="entry-title">'.$title.'</span> was last modified: <span class="updated"> '.$t.'</span> by <span class="author vcard"><span class="fn">'.$author.'</span></span></div>';
+}
+return $content;
+}
+add_filter('the_content', 'add_suf_hatom_data');
+/* Fix "Missing Entry Title" issue - END */

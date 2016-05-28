@@ -195,7 +195,7 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 				$permalink = get_permalink( $postid );
 				$widget_html .= '
 				<p class="gwolle_gb_link">
-					<a href="' . $permalink . '" title="' . __('Click here to get to the guestbook.', 'gwolle-gb') . '">' . $link_text . '</a></p>';	
+					<a href="' . $permalink . '" title="' . __('Click here to get to the guestbook.', 'gwolle-gb') . '" target="_blank">' . $link_text . '</a>				</p>';
 			}
 			$widget_html .= '</div>' . $after_widget;
 

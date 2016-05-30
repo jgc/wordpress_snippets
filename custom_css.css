@@ -3,8 +3,128 @@ Welcome to Custom CSS!
 
 To learn how this works, see http://wp.me/PEmnE-Bt
 */
+.dashicons, .dashicons-before:before {
+	vertical-align: middle;
+}
+
+.widget-area {
+	margin-top: 0;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 20px;
+}
+
+.site-main {
+	padding: 0 .75em 0 0;
+}
+
+.social-navigation {
+	margin: 0;
+}
+
+#breadcrumbs a:hover {
+	color: blue;
+}
+
+#breadcrumbs {
+	font-size: smaller;
+	text-transform: lowercase;
+	margin-left: 5px;
+	margin-bottom: 0;
+}
+
+.mailto-link:before {
+	font-family: "dashicons";
+	content: "\f466";
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1;
+	vertical-align: top;
+	margin-right: 5px;
+	margin-right: .5rem;
+}
+
+#breadcrumbs:before {
+	font-family: "dashicons";
+	content: "\f102";
+	color: green;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1;
+	vertical-align: top;
+	margin-right: 5px;
+	margin-right: .5rem;
+}
+
+.breadcrumb_last {
+	color: green;
+}
+
+.main-navigation {
+	margin-bottom: 5%;
+}
+
+ul li:hover ul {
+	display: block;
+}
+
+h3, h4 {
+	color: green;
+}
+
+.custom-logo {
+	max-height: 200px;
+}
+
+.site-title, .site-description {
+	display: none;
+}
+
+.site-header {
+	margin: 5% 0;
+	padding: 0 10%;
+}
+
+.entry-title {
+	color: green;
+	margin-top: .75em;
+	margin-bottom: .75em;
+}
+
+.hentry {
+	padding-top: .5em;
+/* was 3 */
+}
+
 .ngg-singlepic {
 	background-color: #000;
+}
+
+.pt-cv-content-item, .pt-cv-wrapper {
+	padding-top: 20px;
+}
+
+.entry-content a, .entry-summary a, .page-content a, .comment-content a, .pingback .comment-body > a, .author-description a, .taxonomy-description a, .textwidget a, .entry-footer a:hover, .comment-metadata a:hover, .pingback .edit-link a:hover, .comment-list .reply a:hover, .site-info a:hover {
+/*color: green;*/
+	background-color: red;
+}
+
+.entry-content h2, .entry-summary h2, .page-content h2, .comment-content h2 {
+	color: green;
+	font-size: 32px;
+	font-size: 3.2rem;
+	line-height: 1.25;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+h4, .pt-cv-title, .entry-content h4, .entry-summary h4, .page-content h4, .comment-content h4 {
+	color: green;
+	font-size: 18px;
+	font-size: 1.8rem;
+	line-height: 1.3333;
+	margin-top: 0;
+	margin-bottom: .5em;
 }
 
 .post-thumbnail {
@@ -34,120 +154,10 @@ nav.amp-wp-title-bar {
 	font-style: none;
 	color: #444444;
 	font-size: 10px;
-	margin-top: 6px;
-	margin-bottom: 6px;
-	padding-top: 10px;
-	padding-left: 0;
+	padding-top: 25px;
+	padding-left: 200px;
 }
 
-/* red */
-/*
-body:before
-{
-	background-color: red;
-	border-color: #000000;
-	border: 0px;
-}
-
-body, p, .hentry, .entry-content, .entry-summary, .entry-header, .entry-footer, .site-info, .site-footer, .site-info a 
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: #000000;
-	background-color: #FFFFFF;
-	border-color: #FFFFFF;
-	border: 0px;
-}
-
-.sidebar, .site-header, .custom-logo
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: red;
-	background-color: red;
-	border-color: red;
-
-}
-
-.current-menu-item a {
-	background-image: none;
-	background-color: red;
-	color: white;
-	font-weight: 700;
-}
-
-.current-menu-item a:hover {
-	color: white;
-	background-color: red;
-}
-
-.menu-item a {
-	background-image: none;
-	background-color: red;
-	color: white;
-	font-weight: 700;
-}
-
-.menu-item a:hover {
-	color: white;
-	background-color: red;
-}
-
-blockquote, a:hover, a:focus, .main-navigation .menu-item-description, .post-navigation .meta-nav, .post-navigation a:hover .post-title, .post-navigation a:focus .post-title, .image-navigation, .image-navigation a, .comment-navigation, .comment-navigation a, .widget, .author-heading, .entry-footer, .entry-footer a, .taxonomy-description, .page-links > .page-links-title, .entry-caption, .comment-author, .comment-metadata, .comment-metadata a, .pingback .edit-link, .pingback .edit-link a, .post-password-form label, .comment-form label, .comment-notes, .comment-awaiting-moderation, .logged-in-as, .form-allowed-tags, .no-comments, .site-info, .site-info a, .wp-caption-text, .gallery-caption, .comment-list .reply a, .widecolumn label, .widecolumn .mu_register label 
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: #000000;
-	border-color: #FFFFFF;
-  background-color: #FFFFFF;
-}
-
-
-.entry-content a, .entry-summary a, .page-content a, .comment-content a, .pingback .comment-body > a, .author-description a, .taxonomy-description a, .textwidget a, .entry-footer a:hover, .comment-metadata a:hover, .pingback .edit-link a:hover, .comment-list .reply a:hover, .site-info a:hover 
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: #000000;
-	border-color: #FFFFFF;
-  background-color: #FFFFFF;}
-
-
-body, blockquote cite, blockquote small, a, .dropdown-toggle:after, .image-navigation a:hover, .image-navigation a:focus, .comment-navigation a:hover, .comment-navigation a:focus, .widget-title, .entry-footer a:hover, .entry-footer a:focus, .comment-metadata a:hover, .comment-metadata a:focus, .pingback .edit-link a:hover, .pingback .edit-link a:focus, .comment-list .reply a:hover, .comment-list .reply a:focus, .site-info a:hover, .site-info a:focus 
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: black;
-	background-color: white;
-}
-
-.secondary a, .dropdown-toggle:after, .widget-title, .widget blockquote cite, .widget blockquote small 
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: #000000;
-	background-color: red;
-	border-color: red;
-}
-
-.widget
-{
-  background-color: red;
-}
-
-input
-{
-  font-family: Tahoma, Geneva, sans-serif;
-	color: #000000;
-	background-color: #FFFFFF;
-}
-
-button, input[type="button"], input[type="reset"], input[type="submit"], .pagination .prev, .pagination .next, .widget_calendar tbody a, .page-links a, .sticky-post 
-{
-    background-color: red;
-}
-
-#gwolle_gb .gb-entry .gb-author-info, .gb-entry .gb-entry-content, .admin-entry
-{
-  border-top: none;
-  border-bottom: none;
-	background-color: #FFFFFF;
-  background-image: none;
-}
-*/
 /* green  */
 body:before {
 	background-color: green;
@@ -220,7 +230,20 @@ body, blockquote cite, blockquote small, a, .dropdown-toggle:after, .image-navig
 }
 
 .widget {
+	background-color: white;
+	margin-left: 0;
+}
+
+ul, .widget p, .widget ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+.secondary {
 	background-color: green;
+	border-color: green;
+	color: #000000;
 }
 
 .gb-entry .gb-author-info, .gb-entry .gb-entry-content, .admin-entry {
@@ -230,23 +253,230 @@ body, blockquote cite, blockquote small, a, .dropdown-toggle:after, .image-navig
 }
 
 #gwolle_gb .input textarea, #gwolle_gb .input input {
-	background-color: #00CC00;
-	border-color: #00CC00;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
 	color: #000000;
+	margin: 0;
 }
 
-.secondary {
-	background-color: green;
-	border-color: green;
-	color: #000000;
+.gb-author-name {
+	color: green;
 }
 
+.gwolle_gb_widget {
+	margin: 0;
+}
+
+li.gwolle_gb_widget, li.gwolle_gb_widget {
+	list-style-type: none;
+	border-bottom: 0;
+	padding: 0;
+	margin: 0;
+}
+
+/*
 #gwolle_gb_new_entry input[type="submit"], #gwolle_gb_write_button input {
 	box-shadow: 0 .25em 0 0 grey, 0 4px 9px rgba(0,0,0,0.75);
 	border-color: grey;
 	background-color: green;
 }
+*/
+.gwolle_gb_link a, #gwolle_gb_write_button input, #gwolle_gb_new_entry input[type="submit"] {
+	text-decoration: none !important;
+	text-transform: initial;
+	outline: 0 !important;
+	outline-color: initial;
+	outline-style: initial;
+	outline-width: 0;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	target-new: tab;
+}
 
 #swipebox-action #swipebox-prev, #swipebox-action #swipebox-next, #swipebox-action #swipebox-close {
 	background-color: green;
+}
+
+#rcorners2 {
+/* position: absolute; */
+	border-radius: 25px;
+	border: 2px solid green;
+	background-color: green;
+	color: white;
+	padding: 20px;
+	margin-bottom: 0;
+	margin-left: 5%;
+	width: 90%;
+/*
+	/* height: 150px;	*/
+}
+
+.cat-links, .posted-on, .posted-date, .published, .author, .byline {
+	display: none;
+}
+
+.page-content {
+	background-color: white;
+}
+
+.page-header {
+	border-left: none;
+	background-color: white;
+}
+
+/*#recentpostswidgetplus-2, #gwolle_gb-2 {
+  float: right;
+	border-radius: 10px;
+	border: 2px solid green;
+	background-color: white;
+	padding-top: 0;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 0;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	width: 40%;
+}
+*/
+.gwolle_gb_widget {
+	margin: 0;
+	border-top: 0;
+	padding: 0;
+/*border-bottom: 1px dotted green;*/
+}
+
+.widget li, .widget ul, {
+	border-top: 0;
+/*border-bottom: 1px dotted green;*/
+}
+
+.widget-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-transform: initial;
+	color: green;
+	background-color: white;
+}
+
+.container {
+	display: table;
+}
+
+.column {
+	display: table-cell;
+	width: 50%;
+}
+
+/*
+#pt-cv-view-bf6bb838ae {
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: 0;
+	border-radius: 25px;
+	border: 2px solid green;
+}
+*/
+.pt-cv-content-item {
+	padding-bottom: 0;
+}
+
+.pt-cv-view .pt-cv-content-item > * {
+	margin-bottom: 0;
+}
+
+.widget {
+	font-size: 12px;
+	font-size: 1.2rem;
+	margin: 0;
+	padding: 0;
+}
+
+.widget p, .widget ul {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+/* Colored Content Boxes */
+.box-blue,
+.box-gray,
+.box-green,
+.box-green-solid,
+.box-grey,
+.box-red,
+.box-yellow {
+	margin: 0 0 10px;
+/* spacing below box */
+	overflow: hidden;
+	padding: 10px 20px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	align-content: center;
+}
+
+.box-blue {
+	background-color: #d8ecf7;
+	border: 1px solid #afcde3;
+}
+
+.box-gray {
+	background-color: #e2e2e2;
+	border: 1px solid #bdbdbd;
+}
+
+.box-green {
+	background-color: white;
+	border: 2px solid green;
+	font-weight: 400;
+	font-size: 80%;
+	font-size-adjust: .58;
+	font-weight: 400;
+}
+
+.box-green-solid {
+	color: #FFFFFF;
+	background-color: green;
+	border: 2px solid green;
+	font-size: 100%;
+	font-size-adjust: .58;
+	font-weight: 400;
+}
+
+.box-grey {
+	background-color: #F5F5F5;
+	border: 1px solid #DDDDDD;
+}
+
+.box-red {
+	background-color: #f9dbdb;
+	border: 1px solid #e9b3b3;
+}
+
+.box-yellow {
+	background-color: #fef5c4;
+	border: 1px solid #fadf98;
+}
+
+.entry-content a, .entry-title {
+/*color: green;*/
+	border-color: #FFF;
+}
+
+.entry-content a:hover {
+	color: blue;
 }

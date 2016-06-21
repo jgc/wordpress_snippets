@@ -28,7 +28,7 @@
 			  $dateText = $yDateStart;  
 			  if ($yDateNow > $yDateStart) $dateText = $yDateStart . '-' . $yDateNow
 			?>
-			<a href="http://ribblevalleygundogs.com">Copyright &#169; <?php echo $dateText; ?> Ribble Valley Gundogs</a>
+			<?php if( function_exists( 'iinclude_page' ) ) iinclude_page( 1500 ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer -->
 

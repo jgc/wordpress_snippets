@@ -410,4 +410,3 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 	}
 	add_action('widgets_init', 'gwolle_gb_widget' );
 }
-

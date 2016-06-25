@@ -1,0 +1,11 @@
+<?php
+
+$old_text = "old";
+$new_text = "new";
+
+$path_to_file = 'path/to/the/file';
+$file_contents = file_get_contents($path_to_file);
+$file_contents = str_replace($old_text, $new_text, $file_contents);
+file_put_contents($path_to_file,$file_contents);
+
+?>

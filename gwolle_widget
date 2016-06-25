@@ -25,7 +25,9 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 					'no_mod'      => 0,
 					'name'        => 1,
 					'date'        => 1,
+					'slider'      => 0,
 					'num_words'   => 10,
+					'book_id'     => 0,
 					'link_text'   => __('Visit guestbook', 'gwolle-gb'),
 					'postid'      => 0
 				);
@@ -39,11 +41,21 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 			if ( $no_mod ) { $no_mod = 'true'; }
 			$name          = (int) esc_attr($instance['name']);
 			$date          = (int) esc_attr($instance['date']);
+			$slider        = (int) esc_attr($instance['slider']);
 			$num_words     = (int) esc_attr($instance['num_words']);
+			$book_id       = (int) esc_attr($instance['book_id']);
 			$link_text     = esc_attr($instance['link_text']);
 			$postid        = (int) esc_attr($instance['postid']);
 
 			$html5 = current_theme_supports( 'html5' );
+
+			// Prepare for SSS Slider. Registers Script with WordPress to wp_footer().
+			$slider_class = '';
+			if ( $slider ) {
+				wp_register_script( 'gwolle_gb_widget_sss', plugins_url( '/js/sss/sss.js', __FILE__ ), 'jquery', GWOLLE_GB_VER, true );
+				wp_enqueue_script( 'gwolle_gb_widget_sss' );
+				$slider_class = 'gwolle_gb_widget_slider';
+			}
 
 			// Init
 			$widget_html = '';
@@ -55,7 +67,7 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 				$widget_html .= $before_title . apply_filters('widget_title', $widget_title) . $after_title;
 			}
 
-			$widget_html .= '<ul class="gwolle_gb_widget">';
+			$widget_html .= '<ul class="gwolle_gb_widget ' . $slider_class . '">';
 			$counter = 0;
 
 			// Get the best entries first
@@ -72,8 +84,8 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 						}
 						// Main Content
 						$widget_html .= '
-										<li class="gwolle_gb_widget">
-										';
+							<li class="gwolle_gb_widget">
+							';
 
 						if ( $html5 ) {
 							$widget_html .= '<article>';
@@ -114,8 +126,8 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 						}
 
 						$widget_html .= '
-										</li>
-										';
+							</li>
+							';
 
 						$counter++;
 					}
@@ -130,6 +142,7 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 						'checked'       => 'checked',
 						'trash'         => 'notrash',
 						'spam'          => 'nospam',
+						'book_id'       => $book_id,
 						'no_moderators' => $no_mod
 						)
 					);
@@ -195,7 +208,8 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 				$permalink = get_permalink( $postid );
 				$widget_html .= '
 				<p class="gwolle_gb_link">
-					<a href="' . $permalink . '" title="' . __('Click here to view testimonials.', 'gwolle-gb') . '" target="_blank">' . $link_text . '</a>				</p>';
+					<a href="' . $permalink . '" title="' . __('Click here to get to the guestbook.', 'gwolle-gb') . '">' . $link_text . ' &raquo;</a>
+				</p>';
 			}
 			$widget_html .= '</div>' . $after_widget;
 
@@ -232,7 +246,13 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 			} else {
 				$instance['date']    = 0;
 			}
+			if ( isset($new_instance['slider']) ) {
+				$instance['slider']  = (int) $new_instance['slider'];
+			} else {
+				$instance['slider']  = 0;
+			}
 			$instance['num_words']   = (int) $new_instance['num_words'];
+			$instance['book_id']     = (int) $new_instance['book_id'];
 			$instance['link_text']   = strip_tags($new_instance['link_text']);
 			$instance['postid']      = (int) $new_instance['postid'];
 
@@ -249,7 +269,9 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 					'no_mod'      => 0,
 					'name'        => 1,
 					'date'        => 1,
+					'slider'      => 0,
 					'num_words'   => 10,
+					'book_id'     => 0,
 					'link_text'   => __('Visit guestbook', 'gwolle-gb'),
 					'postid'      => 0
 				);
@@ -261,7 +283,9 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 			$no_mod        = (int) esc_attr($instance['no_mod']);
 			$name          = (int) esc_attr($instance['name']);
 			$date          = (int) esc_attr($instance['date']);
+			$slider        = (int) esc_attr($instance['slider']);
 			$num_words     = (int) esc_attr($instance['num_words']);
+			$book_id       = (int) esc_attr($instance['book_id']);
 			$link_text     = esc_attr($instance['link_text']);
 			$postid        = (int) esc_attr($instance['postid']);
 			?>
@@ -313,6 +337,12 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 			</p>
 
 			<p>
+				<label for="<?php echo $this->get_field_id('slider'); ?>">
+				<input type="checkbox" id="<?php echo $this->get_field_id('slider'); ?>" <?php checked(1, $slider ); ?> name="<?php echo $this->get_field_name('slider'); ?>" value="1" />
+				<?php _e('Use Slider View.', 'gwolle-gb'); ?></label>
+			</p>
+
+			<p>
 				<label for="<?php echo $this->get_field_id('num_words'); ?>" /><?php _e('Number of words for each entry:', 'gwolle-gb'); ?></label>
 				<br />
 				<select id="<?php echo $this->get_field_id('num_words'); ?>" name="<?php echo $this->get_field_name('num_words'); ?>">
@@ -326,6 +356,13 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 					}
 					?>
 				</select>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id('book_id'); ?>" /><?php _e('Book ID:', 'gwolle-gb'); ?></label>
+				<br />
+				<input type="text" id="<?php echo $this->get_field_id('book_id'); ?>" value="<?php echo $book_id; ?>" name="<?php echo $this->get_field_name('book_id'); ?>" /><br />
+				<?php _e('0 means all.', 'gwolle-gb'); ?>
 			</p>
 
 			<p>
@@ -373,3 +410,4 @@ if (function_exists('register_sidebar') && class_exists('WP_Widget')) {
 	}
 	add_action('widgets_init', 'gwolle_gb_widget' );
 }
+

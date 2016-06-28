@@ -30,24 +30,17 @@
 			<div class="site-branding">
 				<?php
 					twentyfifteen_the_custom_logo(); 
-					$enf1 = FBLOGO;
-					$enf2 = YTLOGO;
-					if ( current_user_can( 'manage_options' ) || $enf1 == 1 || $enf2 == 1 ) : ?>
-						<div class="other_logo_div">
-					<?php endif;	
-					if ( current_user_can( 'manage_options' ) || $enf1 == 1 ) : ?>
-						<a class="follow" href="https://www.facebook.com/ribblevalleygundogs" target="_default">
-  			        		<img class="other_logo" src="/wp-content/uploads/facebook_h50.png" alt="Our Facebook page"></a>
-					<?php endif;
-					if ( current_user_can( 'manage_options' ) || $enf2 == 1 ) : ?>  			        		
-  			        		&nbsp;
-  			        		<a class="follow" href="https://www.youtube.com/c/Ribblevalleygundogs" target="_default">
-  			        		<img class="other_logo" src="/wp-content/uploads/Youtube.png" alt="Our Youtube channel"></a>
-					<?php endif;
-					if ( current_user_can( 'manage_options' ) || $enf1 == 1 || $enf2 == 1 ) : ?>
-						</div>
-					<?php endif;	
+				?>
 					
+				<div class="other_logo_div">
+					<a class="follow" href="https://www.facebook.com/ribblevalleygundogs" target="_default">
+  			        	<img class="other_logo" src="/wp-content/uploads/facebook_h50.png" alt="Our Facebook page"></a>
+					&nbsp;
+  			        	<a class="follow" href="https://www.youtube.com/c/Ribblevalleygundogs" target="_default">
+  			        	<img class="other_logo" src="/wp-content/uploads/Youtube.png" alt="Our Youtube channel"></a>
+				</div>
+					
+				<?php	
 					if ( is_front_page() && is_home() ) : ?>
 						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 					<?php else : ?>
